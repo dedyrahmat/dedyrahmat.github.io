@@ -1,18 +1,21 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import { Navigation } from "./components/navigation";
-import { Hero } from "./components/hero";
+import Navigation from "./components/navigation";
+import Hero from "./pages/hero";
+import About from "./pages/about";
+import Experience from "./pages/experience";
+import Contact from "./pages/contact";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <main className="min-h-screen bg-background">
+    <div className="w-full min-h-screen bg-background text-foreground overflow-hidden">
       <Navigation />
-      <Hero />
-    </main>
+      <main className="w-full mx-auto container">
+        <Hero />
+        <About />
+        <Experience />
+        <Contact />
+      </main>
+    </div>
   );
 }
 

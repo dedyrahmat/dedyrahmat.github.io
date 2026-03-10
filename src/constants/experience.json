@@ -1,0 +1,59 @@
+[
+  {
+    "title": "Mobile Developer",
+    "company": "WEEKEND Inc.",
+    "location": "Remote - Jakarta, Indonesia",
+    "period": "Aug 2021 – Present",
+    "highlights": [
+      "Developed and maintained mobile applications using React Native, ensuring smooth performance and cross-platform compatibility",
+      "Designed and implemented new features including inventory management and real-time sales tracking to support business operations",
+      "Optimized application performance to enhance user experience and improve overall stability",
+      "Collaborated with designers and backend engineers to create intuitive, seamless user interfaces",
+      "Conducted thorough testing and debugging to ensure fast, reliable, and stable releases"
+    ]
+  },
+  {
+    "title": "Frontend Developer",
+    "company": "Realtegic Korporindo Investama",
+    "location": "Jakarta, Indonesia",
+    "period": "Feb 2021 – Apr 2021",
+    "highlights": [
+      "Built a responsive online house-buying platform enabling users to browse properties, simulate mortgages, and manage purchases seamlessly",
+      "Developed an Admin Dashboard for managing customer data and tracking house installment payments, improving operational efficiency",
+      "Integrated RESTful APIs with the frontend to ensure smooth data flow between platform and backend systems"
+    ]
+  },
+  {
+    "title": "Frontend Developer",
+    "company": "Tanijoy",
+    "location": "Jakarta, Indonesia",
+    "period": "Dec 2019 – Jan 2021",
+    "highlights": [
+      "Developed responsive websites optimized for fast load times and seamless performance across all devices",
+      "Enhanced website navigation by identifying and resolving usability issues, creating a smoother and more intuitive user experience",
+      "Collaborated with customers and designers to align features with business goals, ensuring the final product met both user needs and stakeholder expectations"
+    ]
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Gandsoft",
+    "location": "Jakarta, Indonesia",
+    "period": "Jan 2019 – Nov 2019",
+    "highlights": [
+      "Developed and maintained an internal e-commerce application for Honda Power Product Indonesia, supporting product management and sales operations",
+      "Collaborated with designers to enhance usability and refine the user interface, improving navigation and overall user satisfaction",
+      "Diagnosed and resolved bugs, boosting application stability and ensuring reliable day-to-day performance"
+    ]
+  },
+  {
+    "title": "Junior Programmer",
+    "company": "PT Bentang MitraGuna",
+    "location": "Jakarta, Indonesia",
+    "period": "Aug 2017 - Jan 2019",
+    "highlights": [
+      "Maintained and enhanced internal applications for Garudafood Indonesia, ensuring reliability and alignment with business needs.",
+      "Implemented new features based on client requests while preserving system stability and data integrity.",
+      "Optimized application performance and usability through regular code improvements, resulting in a smoother user experience."
+    ]
+  }
+]

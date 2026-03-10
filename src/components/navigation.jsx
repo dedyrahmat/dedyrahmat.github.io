@@ -1,87 +1,157 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import info from "../constants/info.json";
+import {
+  Mail,
+  Home,
+  Info,
+  ChartNoAxesCombined,
+  AtSign,
+  ChartNoAxesColumn,
+  Kanban,
+  FolderGit2,
+} from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { toast } from "sonner";
 
+const NAV_ICON_STYLES = "mr-2 text-sm text-muted-foreground";
 const navItems = [
-  { name: "About", href: "#" },
-  { name: "Experience", href: "#" },
-  { name: "Projects", href: "#" },
-  { name: "Contact", href: "#" },
+  {
+    id: "hero",
+    label: "HOME",
+    icon: <Home className={NAV_ICON_STYLES} />,
+  },
+  {
+    id: "about",
+    label: "ABOUT ME",
+    icon: <Info className={NAV_ICON_STYLES} />,
+  },
+  // { id: "skills", label: "SKILLS" },
+  {
+    id: "experience",
+    label: "EXPERIENCE",
+    icon: <ChartNoAxesCombined className={NAV_ICON_STYLES} />,
+  },
+  {
+    id: "projects",
+    label: "PROJECTS",
+    icon: <FolderGit2 className={NAV_ICON_STYLES} />,
+  },
+  {
+    id: "contact",
+    label: "WHERE TO FIND ME",
+    icon: <AtSign className={NAV_ICON_STYLES} />,
+  },
 ];
 
-export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-  // const [scrolled, setScrolled] = useState(false);
+export default function Navigation() {
+  const [activeSection, setActiveSection] = useState("hero");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setScrolled(window.scrollY > 50);
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+  const scrollToSection = (sectionId) => {
+    if (sectionId === activeSection) {
+      setActiveSection("hero");
+    } else {
+      setActiveSection(sectionId);
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const handleCopyEmailAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(info.EMAIL_ADDRESS);
+      toast.success("Yoinked!", {
+        position: "bottom-left",
+      });
+    } catch (error) {
+      toast.error("Failed :(", { position: "bottom-left" });
+      console.log(error);
+    }
+  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background border-b-4 border-black shadow-md">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          <a className="text-3xl md:text-4xl font-bold tracking-tight hover:text-primary transition-colors cursor-pointer">
-            DR<span className="text-primary">{"-"}</span>
-          </a>
-
-          {/* Desktop */}
-          <div className="hidden md:flex items-center gap-2">
-            {navItems.map((nav, index) => (
-              <a
-                key={index}
-                href={nav.href}
-                className="px-4 py-2 font-medium text-foreground hover:bg-primary hover:text-primary-foreground border-2 border-transparent hover:border-black transition-all duration-200"
+    <>
+      {/* Desktop Navigation */}
+      <nav className="hidden lg:fixed lg:left-0 lg:top-0 lg:z-50 lg:flex lg:h-screen lg:w-sm lg:border-r-2 border-black bg-background lg:flex-col px-10 py-16">
+        {/* <nav className="fixed left-0 top-0 z-50 h-screen w-sm border-r-2 border-black bg-background px-10 py-16">*/}
+        <div className="flex flex-col space-y-12">
+          <div>
+            <button
+              className="cursor-pointer"
+              onClick={() => scrollToSection("hero")}
+            >
+              <h1 className="text-2xl font-bold text-foreground font-mono">
+                hey, I'm Dera
+              </h1>
+            </button>
+            <Tooltip>
+              <TooltipTrigger
+                className="mt-2 flex flex-row items-center cursor-pointer"
+                onClick={handleCopyEmailAddress}
               >
-                {nav.name}
-              </a>
-            ))}
-            <a href="#">
-              <button className="bg-primary p-2 cursor-pointer text-primary-foreground ml-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
-                Work with me
+                <Mail className="text-muted-foreground mr-2 text-sm" />
+                <p className="text-sm text-muted-foreground">
+                  {info.EMAIL_ADDRESS}
+                </p>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">Yoink email!</TooltipContent>
+            </Tooltip>
+          </div>
+          <div className="flex flex-col space-y-6">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="flex flex-row items-center text-left
+                text-sm uppercase tracking-widest cursor-pointer
+                text-muted-foreground"
+              >
+                {item.icon}
+                {item.label}
               </button>
-            </a>
+            ))}
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 border-2 border-black bg-background"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden border-t-4 border-black bg-background">
-            <div className="flex flex-col py-4 gap-2">
-              {navItems.map((nav) => (
-                <a
-                  key={nav.name}
-                  href={nav.href}
-                  onClick={() => setIsOpen(false)}
-                  className="px-4 py-3 font-medium text-foreground hover:bg-primary hover:text-primary-foreground border-2 border-transparent hover:border-black transition-all"
-                >
-                  {nav.name}
-                </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
-                className="px-4 pt-2"
+      </nav>
+
+      {/* Mobile Header */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 border-b-2 border-black bg-background p-4 flex items-center justify-between">
+        <button onClick={() => scrollToSection("hero")}>
+          <h1 className="text-xl font-bold text-foreground font-mono">
+            hey, I'm Dera
+          </h1>
+        </button>
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="p-2 text-foreground hover:bg-secondary transition-all"
+        >
+          {mobileMenuOpen ? (
+            <Kanban className="rotate-90" />
+          ) : (
+            <ChartNoAxesColumn className="-rotate-90" />
+          )}
+        </button>
+      </header>
+
+      {mobileMenuOpen && (
+        <nav className="lg:hidden fixed top-16 left-0 right-0 z-40 bg-background border-b border-border">
+          <div className="flex flex-col space-y-4 px-4 py-6">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-left text-sm font-medium py-2 transition-colors text-muted-foreground flex flex-row items-center"
               >
-                <button className="bg-primary p-2 cursor-pointer text-primary-foreground w-full border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
-                  Work with me
-                </button>
-              </a>
-            </div>
+                {item.icon}
+                {item.label}
+              </button>
+            ))}
           </div>
-        )}
-      </div>
-    </nav>
+        </nav>
+      )}
+    </>
   );
 }

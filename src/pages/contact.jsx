@@ -1,4 +1,4 @@
-import { AtSign, Linkedin } from "lucide-react";
+import { AtSign, Linkedin, Phone } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 
 export default function Contact() {
@@ -11,32 +11,42 @@ export default function Contact() {
         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12 lg:mb-16">
           Find out more about me
         </h2>
-        <div className="flex flex-row flex-wrap gap-2">
-          <div className="border border-muted flex flex-col p-6 gap-y-2">
-            <a href="mailto:dedyrahmat@gmail.com">
-              <AtSign className="w-12 h-12 mb-2" />
-              <h2 className="font-bold">email</h2>
-              <p className="text-muted">dedyrahmat@gmail.com</p>
-            </a>
-          </div>
-          <div className="border border-muted flex flex-col p-6">
-            {/* <Phone className="w-6 h-6 mb-2" />*/}
-            <a href="tel:+6281234567890" className="text-muted">
-              +62 812-3456-7890
-            </a>
-          </div>
-          <div className="border border-muted flex flex-col p-6">
-            <SiGithub className="w-6 h-6 mb-2" />
-            <a href="https://github.com/dedyrahmat" className="text-muted">
-              github.com/dedyrahmat
-            </a>
-          </div>
-          <div className="border border-muted flex flex-col p-6">
-            <Linkedin className="w-6 h-6 mb-2" />
-            <a href="https://linkedin.com/in/dedyrahmat" className="text-muted">
-              linkedin.com/in/dedyrahmat
-            </a>
-          </div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 auto-rows-[120px]">
+          {/* Email — large, spans 2 cols x 2 rows */}
+          <a
+            href="mailto:dedyrahmat@gmail.com"
+            className="col-span-2 row-span-2 border border-muted p-6 flex flex-col justify-between hover:bg-muted/10 transition-colors group"
+          >
+            <AtSign className="w-10 h-10 text-foreground group-hover:scale-110 transition-transform" />
+            <div>
+              <h3 className="font-bold text-foreground text-lg">Email</h3>
+              <p className="text-muted text-sm">dedyrahmat@gmail.com</p>
+            </div>
+          </a>
+
+          {/* GitHub — spans 2 cols x 1 row */}
+          <a
+            href="https://github.com/dedyrahmat"
+            target="_blank"
+            rel="noreferrer"
+            className="col-span-2 border border-muted p-6 flex flex-col justify-between hover:bg-muted/10 transition-colors group"
+          >
+            <SiGithub className="w-6 h-6 text-foreground group-hover:scale-110 transition-transform" />
+            <p className="text-muted text-sm">github.com/dedyrahmat</p>
+          </a>
+
+          {/* LinkedIn — spans 2 cols x 1 row */}
+          <a
+            href="https://linkedin.com/in/dedyrahmat"
+            target="_blank"
+            rel="noreferrer"
+            className="col-span-2 border border-muted p-6 flex flex-col justify-between hover:bg-muted/10 transition-colors group"
+          >
+            <Linkedin className="w-6 h-6 text-foreground group-hover:scale-110 transition-transform" />
+            <p className="text-muted text-sm">linkedin.com/in/dedyrahmat</p>
+          </a>
         </div>
       </div>
     </section>

@@ -75,7 +75,7 @@ export default function Navigation() {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="hidden lg:fixed lg:left-0 lg:top-0 lg:z-50 lg:flex lg:h-screen lg:w-sm lg:border-r-2 border-black bg-background lg:flex-col px-10 py-16">
+      <nav className="hidden lg:fixed lg:left-0 lg:top-0 lg:z-50 lg:flex lg:h-screen w-min lg:border-r border-black bg-background lg:flex-col px-10 py-16">
         {/* <nav className="fixed left-0 top-0 z-50 h-screen w-sm border-r-2 border-black bg-background px-10 py-16">*/}
         <div className="flex flex-col space-y-12">
           <div>
@@ -100,7 +100,7 @@ export default function Navigation() {
               <TooltipContent side="bottom">Yoink email!</TooltipContent>
             </Tooltip>
           </div>
-          <div className="flex flex-col space-y-6">
+          <div className="flex flex-col space-y-8">
             {navItems.map((item) => (
               <button
                 key={item.id}

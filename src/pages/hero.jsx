@@ -8,7 +8,7 @@ export default function Hero() {
     // >
     <section
       id="hero"
-      className="w-full min-h-screen bg-background lg:pl-64 flex items-center justify-center lg:justify-start pt-20 lg:pt-0"
+      className="w-full min-h-screen bg-background lg:pl-48 flex items-center justify-center lg:justify-start pt-20 lg:pt-0"
     >
       <div className="w-full max-w-4xl px-4 sm:px-6 lg:px-16 py-16 lg:py-32">
         <div className="space-y-8">
